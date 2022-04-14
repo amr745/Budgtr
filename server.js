@@ -3,7 +3,9 @@ const express = require ('express');
 const app = express ();
 const PORT = process.env.PORT || 3001;
 const Budget = require('./models/budget.js');
+const bodyParser = require('body-parser')
 
+app.use(express.urlencoded({ extended: false }));
 app.use(express.static("public"))
 
 app.get("/", (req,res) => {
@@ -16,15 +18,21 @@ app.get("/budgets", (req,res) => {
     });
 });
 
+app.get("/budgets/new", (req,res) => {
+    res.render("new.ejs")
+});
+
 app.get("/budgets/:index", (req,res) => {
     res.render("show.ejs", {
         wholeBudget: Budget[req.params.index],
     });
 });
 
-// app.get("/budgets/new", (req,res) => {
-//     res.render("new.ejs")
-// });
+app.post('/budgets', (req, res) => {
+    Budget.push(req.body);
+    // console.log(Budget);
+    res.redirect('/budgets');
+  });
 
 // app.post("/budgets", (req, res) => {
     // res.send("")
