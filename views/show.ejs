@@ -6,10 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="./normalize.css" />
-    <link rel="stylesheet" href="./skeleton.css" />
+    <link rel="stylesheet" href="/normalize.css" />
+    <link rel="stylesheet" href="/skeleton.css" />
 </head>
 <body>
-    
+    <div class="container">
+        <h1><%=wholeBudget.name %></h1>
+        <a href="/budgets">
+            <button>BACK</button>
+        </a>
+        <h3>date</h3>
+        <p><%=wholeBudget.date %></p>
+        <h3>name</h3>
+        <p><%=wholeBudget.name%></p>
+        <h3>from</h3>
+        <p><%=wholeBudget.from %></p>
+        <h3>amount</h3>
+        <p><%=wholeBudget.amount %></p>
+        <h3>tags</h3>
+        <p><%=wholeBudget.tags %></p>
+    </div>
 </body>
 </html>

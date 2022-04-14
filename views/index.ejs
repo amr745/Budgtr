@@ -6,21 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="./normalize.css" />
-    <link rel="stylesheet" href="./skeleton.css" />
+    <link rel="stylesheet" href="/normalize.css" />
+    <link rel="stylesheet" href="/skeleton.css" />
 </head>
 <body>
-    <div class="container"></div>
-    <h1>Budgtr ALL</h1>
-    <table>
-        <% for(let i = 0; i < wholeBudget.length; i++) { %>
-        <tr>
-            <td><%=wholeBudget[i].date%></td>
-            <td><a href=""><%=wholeBudget[i].name%></a></td>
-            <td><%=wholeBudget[i].amount%></td>
-        </tr>
-        <% } %>
-    </table>
+    <div class="container">
+        <h1>Budgtr ALL</h1>
+        <table>
+            <% for(let i = 0; i < wholeBudget.length; i++) { %>
+                <tr>
+                    <td><%=wholeBudget[i].date%></td>
+                    <td><a href="/budgets/<%=i%>"><%=wholeBudget[i].name%></a></td>
+                    <td><%=wholeBudget[i].amount%></td>
+                </tr>
+                <% } %>
+            </table>
+        </div>
         
 </body>
 </html>
