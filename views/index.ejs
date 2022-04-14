@@ -12,6 +12,15 @@
 <body>
     <div class="container"></div>
     <h1>Budgtr ALL</h1>
-    
+    <table>
+        <% for(let i = 0; i < wholeBudget.length; i++) { %>
+        <tr>
+            <td><%=wholeBudget[i].date%></td>
+            <td><a href=""><%=wholeBudget[i].name%></a></td>
+            <td><%=wholeBudget[i].amount%></td>
+        </tr>
+        <% } %>
+    </table>
+        
 </body>
 </html>
