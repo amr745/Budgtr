@@ -1,26 +1,29 @@
 const express = require ('express');
-// const res = require('express/lib/response');
 let bodyParser = require('body-parser')
 const app = express ();
 const PORT = process.env.PORT || 3001;
 const Budget = require('./models/budget.js');
 
 app.use(express.urlencoded({ extended: false }));
-// app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(express.urlencoded({extended: true}));
-
 app.use(express.static("public"));
-// app.use(bodyParser);
-// app.use(express.json())
-// app.use(bodyParser.json());
 
 app.get("/", (req,res) => {
     res.send("Hello World")
 });
 
-app.get("/budgets", (req,res) => {
+app.get("/budgets", (req, res) => {
+    let sum = Budget.map(item => item.amount)
+    const BankAccount = sum.reduce((a, b) => parseInt(a) + parseInt(b), 0)
+    let color = "";
+    if (BankAccount <= 0) {
+        color = "red"
+    } else if (BankAccount >= 1000) {
+        color = "green"
+    }
     res.render('index.ejs', {
         wholeBudget: Budget,
+        totalBankAccount: BankAccount,
+        Colors: color,
     });
 });
 
